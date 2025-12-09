@@ -74,7 +74,7 @@ resource "aws_security_group" "no_ssh_rdp" {
   ingress {
     description = "HTTPS"
     from_port   = 443
-    to_port     = 443
+    to_port     = 444
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }

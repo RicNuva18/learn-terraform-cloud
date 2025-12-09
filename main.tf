@@ -124,6 +124,7 @@ resource "aws_instance" "example" {
   vpc_security_group_ids      = [aws_security_group.no_ssh_rdp.id]
   iam_instance_profile        = aws_iam_instance_profile.ec2_profile.name
   associate_public_ip_address = true
+  disable_api_stop = false
 
   tags = {
     Name = var.name

@@ -111,6 +111,17 @@ resource "aws_iam_role_policy_attachment" "attach_ssm" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
 }
 
+data "aws_ami" "amazon_linux2" {
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["amzn2-ami-hvm-*-x86_64-gp2"]
+  }
+
+  owners = ["amazon"]
+}
+
 resource "aws_iam_instance_profile" "ec2_profile" {
   name = "${var.name}-instance-profile"
   role = aws_iam_role.ec2_ssm_role.name
